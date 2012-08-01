@@ -6,6 +6,8 @@ import org.quartz.Scheduler;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
 
+import java.util.Date;
+
 import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
@@ -33,11 +35,11 @@ public class QuartzTest {
         scheduler.scheduleJob(job, trigger);
 
         Thread.sleep(10 * 60 * 1000);
-        System.out.println("Pausing trigger...");
+        System.out.println("Pausing trigger... Date: " + new Date());
         scheduler.pauseTrigger(trigger.getKey());
         Thread.sleep(10 * 60 * 1000);
 
-        System.out.println("Resuming trigger...");
+        System.out.println("Resuming trigger... Date: " + new Date());
         scheduler.resumeAll();
     }
 }
